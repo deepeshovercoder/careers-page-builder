@@ -82,7 +82,7 @@ export default function Dashboard() {
 
             {/* Header */}
             <div className="text-center mb-6 md:mb-12 relative z-20">
-              <h1 className="text-balance bg-gradient-to-r from-white via-slate-100 to-white/80 bg-clip-text text-2xl md:text-4xl font-light tracking-tight drop-shadow-2xl mb-4">
+              <h1 className="text-2xl md:text-4xl text-bold tracking-tight drop-shadow-2xl mb-4">
                 Recruiter Dashboard
               </h1>
             </div>
@@ -97,7 +97,7 @@ export default function Dashboard() {
                      <span className='text-2xl md:text-3xl'>👋</span>
                       </div>
                       <div>
-                        <h2 className="text-md md:text-2xl font-bold text-gray-800 mb-1">Welcome {company.name}</h2>
+                        <h2 className="text-md md:text-2xl font-semibold text-gray-800 mb-1">Welcome {company.name}</h2>
                         <p className="text-gray-600 text-xs md:text-sm text-start">Your careers page is ready!</p>
                       </div>
                     </div>
