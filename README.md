@@ -9,7 +9,7 @@ I used the sample job data from the Google Sheet then imported it into Supabase 
 
 ## Live Demo
 
-https://your-netlify-site.netlify.app (replace with your actual Netlify URL once deployed)
+https://https://careers-page-builder.netlify.app/
 
 ## How to Run Locally
 
