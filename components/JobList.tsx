@@ -96,7 +96,7 @@ const paginatedJobs = filteredJobs.slice(
       {paginatedJobs.map(job => (
         <div
           key={job.id}
-          className="bg-white border border-gray-200 rounded-xl shadow-md hover:shadow-xl transition p-6"
+          className="bg-white border border-gray-200 rounded-xl shadow-md hover:border-[var(--primary-color)] hover:border-2 hover:shadow-xl transition p-6"
         >
           <h4 className="text-xl font-bold text-gray-900 mb-2">
             {job.title}
@@ -104,27 +104,27 @@ const paginatedJobs = filteredJobs.slice(
 
           <div className="space-y-2 text-sm text-gray-600 mb-4">
             <p>
-              <span className="font-medium">Department:</span>{' '}
+              <span className="font-semibold">Department:</span>{' '}
               {job.department || 'N/A'}
             </p>
             <p>
-              <span className="font-medium">Location:</span>{' '}
+              <span className="font-semibold">Location:</span>{' '}
               {job.location}
               {job.work_policy && ` • ${job.work_policy}`}
             </p>
             <p>
-              <span className="font-medium">Type:</span>{' '}
+              <span className="font-semibold">Type:</span>{' '}
               {job.job_type}
               {job.employment_type && ` • ${job.employment_type}`}
             </p>
             {job.experience_level && (
               <p>
-                <span className="font-medium">Experience:</span>{' '}
+                <span className="font-semibold">Experience:</span>{' '}
                 {job.experience_level}
               </p>
             )}
             {job.salary_range && (
-              <p className="font-medium text-[var(--primary-color)]">
+              <p className="font-semibold text-[var(--primary-color)]">
                 {job.salary_range}
               </p>
             )}
