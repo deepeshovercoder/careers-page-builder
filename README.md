@@ -40,6 +40,20 @@ https://https://careers-page-builder.netlify.app/
 - Search by title + filters for location and job type
 - Fully responsive — looks good on mobile
 
+## Sample Data
+
+I used the provided sample job data from the Google Sheet.
+
+The file `jobs.csv` is included in the repo.
+
+In production/demo, I imported it into Supabase:
+- Temporarily dropped NOT NULL on company_id
+- Imported CSV via Table Editor
+- Updated all rows to my company ID
+- Restored NOT NULL
+
+This gives real listings like "Full Stack Engineer" in Berlin with salary ranges, remote tags, etc.
+
 ## Things I'd Improve Next
 
 - Let recruiters add/edit jobs directly in the app instead of manual import
