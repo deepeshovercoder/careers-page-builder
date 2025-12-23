@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import { useState, useEffect, useRef } from 'react';
-import { supabase } from '@/lib/supabase';
-import { v4 as uuidv4 } from 'uuid';
-import { DndProvider, useDrag, useDrop } from 'react-dnd';
-import { HTML5Backend } from 'react-dnd-html5-backend';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
-import { Company, Section } from '@/types';
+import { useState, useEffect, useRef } from "react";
+import { supabase } from "@/lib/supabase";
+import { v4 as uuidv4 } from "uuid";
+import { DndProvider, useDrag, useDrop } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+import { Company, Section } from "@/types";
 
-const ItemType = 'SECTION';
+const ItemType = "SECTION";
 
 /* ---------------- Section Item ---------------- */
 
@@ -33,7 +33,7 @@ const SectionItem = ({
   const [{ isDragging }, drag] = useDrag({
     type: ItemType,
     item: { index },
-    collect: monitor => ({ isDragging: monitor.isDragging() }),
+    collect: (monitor) => ({ isDragging: monitor.isDragging() }),
   });
 
   const [, drop] = useDrop({
@@ -52,40 +52,39 @@ const SectionItem = ({
     <div
       ref={ref}
       className={`bg-white border rounded-xl p-4 mb-4 shadow-sm ${
-        isDragging ? 'opacity-50' : ''
+        isDragging ? "opacity-50" : ""
       }`}
     >
-     <div className="flex flex-col md:flex-row md:items-center gap-2 mb-3">
-  <div className="flex items-center gap-2 flex-1">
-    <span className="cursor-move text-gray-400">☰</span>
+      <div className="flex flex-col md:flex-row md:items-center gap-2 mb-3">
+        <div className="flex items-center gap-2 flex-1">
+          <span className="cursor-move text-gray-400">☰</span>
 
-    <input
-      value={section.title}
-      onChange={e =>
-        updateSection(section.id, e.target.value, section.content)
-      }
-      className="flex-1 border rounded px-2 py-1 text-sm"
-      placeholder="Section title"
-    />
-  </div>
+          <input
+            value={section.title}
+            onChange={(e) =>
+              updateSection(section.id, e.target.value, section.content)
+            }
+            className="flex-1 border rounded px-2 py-1 text-sm"
+            placeholder="Section title"
+          />
+        </div>
 
-  <button
-    onClick={() => removeSection(section.id)}
-    className="
+        <button
+          onClick={() => removeSection(section.id)}
+          className="
       text-white bg-red-600 text-sm rounded-xl
       py-1.5 px-3
       w-full md:w-auto
       md:ml-2
     "
-  >
-    Remove
-  </button>
-</div>
-
+        >
+          Remove
+        </button>
+      </div>
 
       <ReactQuill
         value={section.content}
-        onChange={content =>
+        onChange={(content) =>
           updateSection(section.id, section.title, content)
         }
         placeholder="Section content"
@@ -119,25 +118,25 @@ export default function Editor({ company }: Props) {
   }, [company]);
 
   const handleThemeChange = (key: string, value: string) => {
-    setTheme(prev => ({ ...prev, [key]: value }));
+    setTheme((prev) => ({ ...prev, [key]: value }));
   };
 
   const addSection = () => {
-    setSections(prev => [
+    setSections((prev) => [
       ...prev,
-      { id: uuidv4(), title: 'New Section', content: '', order: prev.length },
+      { id: uuidv4(), title: "New Section", content: "", order: prev.length },
     ]);
   };
 
   const updateSection = (id: string, title: string, content: string) => {
-    setSections(prev =>
-      prev.map(s => (s.id === id ? { ...s, title, content } : s))
+    setSections((prev) =>
+      prev.map((s) => (s.id === id ? { ...s, title, content } : s))
     );
   };
 
   const removeSection = (id: string) => {
-    setSections(prev =>
-      prev.filter(s => s.id !== id).map((s, i) => ({ ...s, order: i }))
+    setSections((prev) =>
+      prev.filter((s) => s.id !== id).map((s, i) => ({ ...s, order: i }))
     );
   };
 
@@ -163,31 +162,30 @@ export default function Editor({ company }: Props) {
     const file = e.target.files?.[0];
     if (!file) return;
     setLogoPreview(URL.createObjectURL(file));
-    const url = await uploadFile(file, 'logos');
-    if (url) handleThemeChange('logoUrl', url);
+    const url = await uploadFile(file, "logos");
+    if (url) handleThemeChange("logoUrl", url);
   };
 
   const handleBannerUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
     setBannerPreview(URL.createObjectURL(file));
-    const url = await uploadFile(file, 'banners');
-    if (url) handleThemeChange('bannerUrl', url);
+    const url = await uploadFile(file, "banners");
+    if (url) handleThemeChange("bannerUrl", url);
   };
 
   const saveChanges = async () => {
     await supabase
-      .from('companies')
+      .from("companies")
       .update({ theme, sections })
-      .eq('id', company.id);
+      .eq("id", company.id);
 
-    alert('Changes saved');
+    alert("Changes saved");
   };
 
   return (
     <DndProvider backend={HTML5Backend}>
       <div className="max-w-6xl mx-auto px-4 py-10 grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-10">
-
         {/* MAIN */}
         <div>
           <h1 className="text-2xl md:text-3xl font-semibold mb-8 text-[var(--primary-color)]">
@@ -203,9 +201,9 @@ export default function Editor({ company }: Props) {
                 <label className="text-sm font-medium">Primary Color</label>
                 <input
                   type="color"
-                  value={theme.primaryColor || '#5139ed'}
-                  onChange={e =>
-                    handleThemeChange('primaryColor', e.target.value)
+                  value={theme.primaryColor || "#5139ed"}
+                  onChange={(e) =>
+                    handleThemeChange("primaryColor", e.target.value)
                   }
                 />
               </div>
@@ -215,8 +213,8 @@ export default function Editor({ company }: Props) {
                 <input
                   type="color"
                   value={theme.secondaryColor}
-                  onChange={e =>
-                    handleThemeChange('secondaryColor', e.target.value)
+                  onChange={(e) =>
+                    handleThemeChange("secondaryColor", e.target.value)
                   }
                 />
               </div>
@@ -226,14 +224,11 @@ export default function Editor({ company }: Props) {
                 <label className="text-sm font-medium mb-1 block">Logo</label>
                 {logoPreview ? (
                   <div className="relative inline-block">
-                    <img
-                      src={logoPreview}
-                      className="h-14 rounded border"
-                    />
+                    <img src={logoPreview} className="h-14 rounded border" />
                     <button
                       onClick={() => {
                         setLogoPreview(null);
-                        handleThemeChange('logoUrl', '');
+                        handleThemeChange("logoUrl", "");
                       }}
                       className="absolute -top-2 -right-2 bg-black text-white h-6 w-6 rounded-full text-xs"
                     >
@@ -257,7 +252,7 @@ export default function Editor({ company }: Props) {
                     <button
                       onClick={() => {
                         setBannerPreview(null);
-                        handleThemeChange('bannerUrl', '');
+                        handleThemeChange("bannerUrl", "");
                       }}
                       className="absolute top-2 right-2 bg-black text-white h-6 w-6 rounded-full text-xs"
                     >
@@ -270,37 +265,38 @@ export default function Editor({ company }: Props) {
               </div>
 
               {/* CULTURE VIDEO */}
-<div className="sm:col-span-2">
-  <label className="text-sm font-medium mb-1 block">
-    Culture Video URL
-  </label>
+              <div className="sm:col-span-2">
+                <label className="text-sm font-medium mb-1 block">
+                  Culture Video URL
+                </label>
 
-  <input
-    type="url"
-    value={theme.videoUrl || ''}
-    onChange={e => handleThemeChange('videoUrl', e.target.value)}
-    placeholder="https://youtube.com/watch?v=..."
-    className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]"
-  />
+                <input
+                  type="url"
+                  value={theme.videoUrl || ""}
+                  onChange={(e) =>
+                    handleThemeChange("videoUrl", e.target.value)
+                  }
+                  placeholder="https://youtube.com/watch?v=..."
+                  className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]"
+                />
 
-  {theme.videoUrl && (
-    <div className="relative mt-3 rounded-xl overflow-hidden border">
-      <iframe
-        src={theme.videoUrl.replace('watch?v=', 'embed/')}
-        className="w-full h-48"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-      />
-      <button
-        onClick={() => handleThemeChange('videoUrl', '')}
-        className="absolute top-2 right-2 bg-black/70 text-white h-7 w-7 rounded-full text-xs flex items-center justify-center"
-      >
-        ✕
-      </button>
-    </div>
-  )}
-</div>
-
+                {theme.videoUrl && (
+                  <div className="relative mt-3 rounded-xl overflow-hidden border">
+                    <iframe
+                      src={theme.videoUrl.replace("watch?v=", "embed/")}
+                      className="w-full h-48"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                    <button
+                      onClick={() => handleThemeChange("videoUrl", "")}
+                      className="absolute top-2 right-2 bg-black/70 text-white h-7 w-7 rounded-full text-xs flex items-center justify-center"
+                    >
+                      ✕
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
           </section>
 

@@ -20,7 +20,7 @@ export async function middleware(req: NextRequest) {
     }
   );
 
-  // 🔑 REQUIRED: sync session cookies for App Router
+  // sync session cookies for App Router
   await supabase.auth.getSession();
 
   return res;

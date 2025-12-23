@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import type { CSSProperties } from 'react';
-import { Company, Job } from '@/types';
-import JobList from './JobList';
+import type { CSSProperties } from "react";
+import { Company, Job } from "@/types";
+import JobList from "./JobList";
 
 interface Props {
   company: Company;
@@ -10,13 +10,17 @@ interface Props {
   isPreview?: boolean;
 }
 
-export default function CareersPage({ company, jobs, isPreview = false }: Props) {
+export default function CareersPage({
+  company,
+  jobs,
+  isPreview = false,
+}: Props) {
   const { theme, sections } = company;
   const sortedSections = [...sections].sort((a, b) => a.order - b.order);
 
   const styleVars = {
-    '--primary-color': theme.primaryColor || '#5139ed',
-    '--secondary-color': theme.secondaryColor || '#6366f1',
+    "--primary-color": theme.primaryColor || "#5139ed",
+    "--secondary-color": theme.secondaryColor || "#6366f1",
   } as CSSProperties;
 
   return (
@@ -48,7 +52,8 @@ export default function CareersPage({ company, jobs, isPreview = false }: Props)
               </div>
 
               <p className="max-w-xl text-sm sm:text-base text-slate-700 leading-relaxed mb-6">
-                Explore open roles, learn about how we work, and find the opportunity that fits you best.
+                Explore open roles, learn about how we work, and find the
+                opportunity that fits you best.
               </p>
 
               <div className="flex flex-wrap items-center gap-3">
@@ -59,7 +64,9 @@ export default function CareersPage({ company, jobs, isPreview = false }: Props)
                   View open roles
                 </a>
                 <span className="text-xs sm:text-sm text-slate-500">
-                  {jobs.length > 0 ? `${jobs.length} roles available` : 'No open roles right now'}
+                  {jobs.length > 0
+                    ? `${jobs.length} roles available`
+                    : "No open roles right now"}
                 </span>
               </div>
             </div>
@@ -96,33 +103,30 @@ export default function CareersPage({ company, jobs, isPreview = false }: Props)
       <main className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16">
         {/* Optional video */}
         {theme.videoUrl && (
-  <section className="mt-8 sm:mt-10">
-    <div className="rounded-2xl overflow-hidden shadow-lg shadow-slate-900/5 border border-slate-200/60 bg-white">
-
-      {/* MP4 / direct video */}
-      {theme.videoUrl.match(/\.(mp4|webm|ogg)$/i) ? (
-        <video
-          src={theme.videoUrl}
-          controls
-          className="w-full h-[200px] md:h-[400px] object-cover"
-          aria-label="Company culture video"
-        />
-      ) : (
-        /* YouTube / Loom / Vimeo */
-        <iframe
-          src={theme.videoUrl
-            .replace('watch?v=', 'embed/')
-            .replace('youtu.be/', 'youtube.com/embed/')
-          }
-          className="w-full h-[200px] md:h-[400px]"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        />
-      )}
-    </div>
-  </section>
-)}
-
+          <section className="mt-8 sm:mt-10">
+            <div className="rounded-2xl overflow-hidden shadow-lg shadow-slate-900/5 border border-slate-200/60 bg-white">
+              {/* MP4 / direct video */}
+              {theme.videoUrl.match(/\.(mp4|webm|ogg)$/i) ? (
+                <video
+                  src={theme.videoUrl}
+                  controls
+                  className="w-full h-[200px] md:h-[400px] object-cover"
+                  aria-label="Company culture video"
+                />
+              ) : (
+                /* YouTube / Loom / Vimeo */
+                <iframe
+                  src={theme.videoUrl
+                    .replace("watch?v=", "embed/")
+                    .replace("youtu.be/", "youtube.com/embed/")}
+                  className="w-full h-[200px] md:h-[400px]"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              )}
+            </div>
+          </section>
+        )}
 
         {/* Story sections */}
         {sortedSections.length > 0 && (

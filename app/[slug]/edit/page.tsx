@@ -25,7 +25,7 @@ export default async function EditPage({ params }: Props) {
 const user = session?.user;
 
   
-  // DEBUG: Remove after fix
+  // DEBUG
   console.log('DEBUG Edit - User ID:', user?.id);
   console.log('DEBUG Edit - Company user_id:', company.user_id);
   

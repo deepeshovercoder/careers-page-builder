@@ -29,7 +29,7 @@ export default function Home() {
               </span>
             </div>
 
-            {/* Hero content - Recruiter focused */}
+            {/* Hero content */}
             <div className="space-y-8 text-center relative z-10">
               <div className="space-y-6">
                 <h1 className="text-balance bg-gradient-to-r from-slate-900/95 via-gray-900/95 to-slate-800/95 bg-clip-text text-4xl font-light tracking-tight sm:text-4xl md:text-5xl lg:text-7xl drop-shadow-lg">
@@ -58,7 +58,6 @@ export default function Home() {
 
               {/* Recruiter metrics */}
               <div className="flex flex-wrap items-center justify-center gap-8 text-sm text-slate-700/90 gap-5 md:gap-10 relative z-10">
-                {/* 5 min setup */}
                 <div className="flex items-center gap-2">
                   <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-white/30 backdrop-blur-sm border border-white/50 shadow-lg shadow-indigo-200/40 hover:shadow-xl hover:shadow-indigo-300/50 transition-all duration-300">
                     <svg className="h-5 w-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
