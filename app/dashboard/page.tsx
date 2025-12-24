@@ -225,42 +225,57 @@ export default function Dashboard() {
                 </div>
               ) : (
                 /* Create Company State */
-                <div className="text-center space-y-8">
-                  <div className="bg-white/20 backdrop-blur-2xl rounded-3xl p-8 border border-white/30 shadow-2xl shadow-[#5139ed]/20">
-                    <div className="flex items-center justify-center gap-4 mb-6">
-                      <div className="h-16 w-16 bg-gradient-to-r from-[#5139ed]/30 to-purple-500/30 rounded-3xl border-2 border-[#5139ed]/50 flex items-center justify-center">
-                        <svg className="h-8 w-8 text-[#5139ed]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h2 className="text-2xl font-bold text-white/95 mb-1">Get Started</h2>
-                      </div>
-                    </div>
-                  </div>
+              <div className="text-center space-y-8">
+  {/* Header card */}
+  <div className="bg-white/20 backdrop-blur-2xl rounded-3xl px-6 py-7 sm:px-8 sm:py-8 border border-white/30 shadow-2xl shadow-[#5139ed]/20">
+    <div className="flex items-center justify-center gap-4 mb-3">
+      <div className="h-14 w-14 sm:h-16 sm:w-16 bg-gradient-to-r from-[#5139ed]/30 to-purple-500/40 rounded-2xl border-2 border-[#5139ed]/60 flex items-center justify-center shadow-md shadow-[#5139ed]/40">
+        <svg className="h-7 w-7 sm:h-8 sm:w-8 text-[#5139ed]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+        </svg>
+      </div>
+      <div className="text-left">
+        <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-1">Get started</h2>
+        <p className="text-xs sm:text-sm text-gray-600">
+          Create your company space in a few seconds.
+        </p>
+      </div>
+    </div>
+  </div>
 
-                  <div className="space-y-6">
-                    <div className="relative">
-                      <input
-                        type="text"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        placeholder="Enter your company name"
-                        className="w-full px-6 py-5 text-lg font-medium text-white/95 bg-white/10 backdrop-blur-2xl border border-white/20 rounded-3xl shadow-xl shadow-[#5139ed]/20 focus:outline-none focus:border-[#5139ed]/50 focus:shadow-2xl focus:shadow-[#5139ed]/40 focus:bg-white/20 transition-all duration-500 placeholder-white/50"
-                        aria-label="Company name"
-                      />
-                    </div>
-                    
-                    <button 
-                      onClick={createCompany} 
-                      disabled={!name.trim()}
-                      className="group relative w-full px-8 py-6 rounded-3xl bg-gradient-to-r from-[#5139ed] via-[#5a40f3] to-[#6742f6] text-xl font-bold text-white shadow-3xl shadow-[#5139ed]/50 backdrop-blur-xl border border-white/30 hover:shadow-4xl hover:shadow-[#5139ed]/70 hover:-translate-y-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-lg transition-all duration-500 overflow-hidden"
-                    >
-                      <span className="relative z-10">Create Company</span>
-                      <div className="absolute inset-0 bg-gradient-to-r from-white/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    </button>
-                  </div>
-                </div>
+  {/* Form */}
+  <div className="space-y-5">
+    <div className="text-left">
+      <label
+        htmlFor="company-name"
+        className="mb-2 block md:text-lg text-md font-medium text-gray-800"
+      >
+        Company name
+      </label>
+      <div className="relative">
+        <input
+          id="company-name"
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Enter your company name"
+          className="w-full px-6 py-4 text-base sm:text-lg font-medium bg-white/12 backdrop-blur-2xl border border-white/30 rounded-3xl shadow-xl shadow-[#5139ed]/25 focus:outline-none focus:border-[#5139ed]/70 focus:shadow-2xl focus:shadow-[#5139ed]/50 focus:bg-white/18 transition-all duration-400 placeholder:text-slate-300"
+          aria-label="Company name"
+        />
+      </div>
+    </div>
+
+    <button
+      onClick={createCompany}
+      disabled={!name.trim()}
+      className="group relative w-full px-8 py-4 sm:py-5 rounded-3xl bg-gradient-to-r from-[#5139ed] via-[#5a40f3] to-[#6742f6] text-base sm:text-lg font-semibold text-white shadow-3xl shadow-[#5139ed]/50 backdrop-blur-xl border border-white/30 hover:shadow-4xl hover:shadow-[#5139ed]/70 hover:-translate-y-1.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-lg transition-all duration-400 overflow-hidden"
+    >
+      <span className="relative z-10">Create company</span>
+      <div className="absolute inset-0 bg-gradient-to-r from-white/30 opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
+    </button>
+  </div>
+</div>
+
               )}
             </div>
           </div>
